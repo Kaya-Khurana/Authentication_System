@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import next from "next";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -18,7 +17,7 @@ export default function LoginPage() {
   const onLogin = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login",user);
+      const response = await axios.post("/api/users/login", user);
       console.log("Login Success", response.data);
       router.push("/profile");
     } catch (err: any) {
@@ -28,6 +27,7 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
@@ -35,6 +35,7 @@ export default function LoginPage() {
       setButtonDisabled(true);
     }
   }, [user]);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 space-y-6">
@@ -78,11 +79,28 @@ export default function LoginPage() {
         <button
           onClick={onLogin}
           className="w-full py-2 mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition"
+          disabled={buttonDisabled || loading}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
+        <div className="flex justify-between mt-4">
+          <button
+            type="button"
+            onClick={() => router.push("/forgotpassword")}
+            className="text-blue-600 hover:underline font-medium"
+          >
+            Forgot Password?
+          </button>
+          <button
+            type="button"
+            onClick={() => router.push("/resetpassword")}
+            className="text-blue-600 hover:underline font-medium"
+          >
+            Reset Password
+          </button>
+        </div>
         <p className="text-center text-gray-600 text-sm mt-4">
-          Do Not have and account?{" "}
+          Do Not have an account?{" "}
           <Link
             href="/signup"
             className="text-blue-600 hover:underline font-medium"
