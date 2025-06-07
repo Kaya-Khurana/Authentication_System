@@ -31,7 +31,7 @@ export default function Profile() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <span className="text-2xl font-bold text-purple-700">
-              Event Management System
+              Authentication system
             </span>
           </div>
           <nav className="space-x-6">
