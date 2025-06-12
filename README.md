@@ -70,7 +70,6 @@ npm run test
 5. Create Pull Request
 
 ## 👤 Author
-
 **Kaya Khurana**
 - GitHub: [@Kaya-Khurana](https://github.com/Kaya-Khurana)
 
